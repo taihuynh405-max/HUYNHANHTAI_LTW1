@@ -20,6 +20,26 @@ $students = [
     "gender"=>"Nữ",
     "class" => "CNTT3"], 
 ];
+$faculties = [
+"Công nghệ thông tin",
+"Quản trị kinh doanh",
+"Kế toán",
+"Ngôn ngữ Anh"
+];
+$classes = [
+"A1" => "CNTT1",
+"A2" => "CNTT2",
+"A3" => "CNTT3",
+"A4" => "CNTT4"
+];
+$genders = ["Nam", "Nữ", "Khác"];
+$hobbies = [
+"LT" => "Lập trình",
+"DS" => "Đọc sách",
+"AN" => "Âm nhạc",
+"DL" => "Du lịch",
+"TT" => "Thể thao"
+];
 ?>
 
 <!DOCTYPE html>
@@ -138,6 +158,57 @@ $students = [
     background-color: #d9e7fa;
 }
 
+.s3 {
+    max-width: 500px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+.s3 h3 {
+    text-align: center;
+    color: #0d6efd;
+    margin-bottom: 20px;
+}
+
+.s3 form div {
+    margin-bottom: 15px;
+}
+
+.s3 label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.s3 input[type="text"],
+.s3 select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.s3 input[type="radio"],
+.s3 input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.s3 button {
+    background: #0d6efd;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.s3 button:hover {
+    background: #084298;
+}
+
     </style>
 </head>
 
@@ -188,6 +259,74 @@ $students = [
             <?php } ?>
         </tbody>
     </table>
+</section>
+
+<section class="s3">
+    <h3>ĐĂNG KÝ THÔNG TIN SINH VIÊN</h3>
+
+    <form action="#" method="post">
+
+        <div>
+            <label>Họ và tên</label>
+            <input type="text" name="name" placeholder="Nhập họ và tên">
+        </div>
+
+        <div>
+            <label>Khoa</label>
+            <select name="faculty">
+                <option value="">-- Chọn khoa --</option>
+                <?php foreach ($faculties as $faculty) { ?>
+                    <option value="<?= $faculty ?>">
+                        <?= $faculty ?>
+                    </option>
+                <?php } ?>
+            </select>
+        </div>
+
+        <div>
+            <label>Lớp</label>
+            <select name="class">
+                <option value="">-- Chọn lớp --</option>
+                <?php foreach ($classes as $key => $class) { ?>
+                    <option value="<?= $class ?>">
+                        <?= $class ?>
+                    </option>
+                <?php } ?>
+            </select>
+        </div>
+
+        <div>
+            <label>Giới tính</label>
+            <?php foreach ($genders as $gender) { ?>
+                <label>
+                    <input type="radio" name="gender"
+                           value="<?= $gender ?>">
+                    <?= $gender ?>
+                </label>
+            <?php } ?>
+        </div>
+
+        <div>
+            <label>Sở thích</label>
+            <?php foreach ($hobbies as $key => $hobby) { ?>
+                <label>
+                    <input type="checkbox" name="hobbies[]"
+                           value="<?= $key ?>">
+                    <?= $hobby ?>
+                </label>
+            <?php } ?>
+        </div>
+
+        <div>
+            <button type="submit" name="submit">
+                Đăng ký
+            </button>
+            <button type="reset">
+                Làm mới
+            </button>
+        </div>
+
+    </form>
 </section>
 
 </body>
